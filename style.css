@@ -282,6 +282,13 @@ section p {
     line-height: 1.6;
 }
 
+.faq a {
+    color: #f9c846;
+}
+.faq a:hover {
+    color: #f4f4f4;
+}
+
 /* CONTACT */
 .contact {
     background-color: var(--dark-bg);
@@ -387,3 +394,4 @@ footer {
         font-size: 24px;
     }
 }
+
