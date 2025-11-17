@@ -2,10 +2,10 @@ User-agent: *
 Disallow: /admin/
 Disallow: /cgi-bin/
 Disallow: /temp/
-Allow: /admin/publiczny-folder/ # Przykład wyjątku
-Allow: /publiczny-folder/ # Inny przykład, jeśli cały folder jest zablokowany szerzej
+Allow: /admin/publiczny-folder/ 
+Allow: /publiczny-folder/ 
 
-User-agent: Googlebot-Image # Reguły tylko dla robota Google indeksującego obrazy
+User-agent: Googlebot-Image 
 Disallow: /obrazy/prywatne/
 
-Sitemap: https://dariamendak487.github.io//sitemap.xml
+Sitemap: https://dariamendak487.github.io/sitemap.xml
