@@ -12,6 +12,13 @@ body {
     line-height: 1.6;
 }
 
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+}
+
 /* KOLORY I AKCENTY */
 :root {
     --accent: #f9c846;
@@ -67,6 +74,7 @@ nav ul li a:hover {
     text-align: center;
     padding: 160px 20px;
     position: relative;
+    /* Obraz tła jest teraz preloadowany w HTML dla szybszego LCP */
     background: url('https://images.pexels.com/photos/6205516/pexels-photo-6205516.jpeg') center/cover no-repeat;
 }
 
@@ -143,10 +151,12 @@ section p {
 }
 
 .about img {
-    width: 80%;
+    /* Zmieniono width na max-width w regule globalnej, tutaj doprecyzowanie */
+    width: 80%; 
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(249, 200, 70, 0.3);
+    margin: 0 auto; /* Centrowanie obrazka */
 }
 
 /*MENU*/
@@ -394,4 +404,3 @@ footer {
         font-size: 24px;
     }
 }
-
