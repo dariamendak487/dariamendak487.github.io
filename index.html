@@ -231,25 +231,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Lub odwiedź nas stacjonarnie pod adesem:<br>42-201 Częstochowa<br>ul. Generała Jana Hendryka Dąbrowskiego 69</p>
     </div>
 </footer>
-<script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links li');
 
-    // Kliknięcie w hamburgera otwiera/zamyka menu
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-
-    // Kliknięcie w dowolny link zamyka menu (żeby nie zasłaniało strony po przejściu)
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
-    });
-</script>
 
 </body>
 </html>
