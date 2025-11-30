@@ -1,4 +1,4 @@
-/* --- RESET & GLOBAL --- */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -12,14 +12,14 @@ body {
     line-height: 1.6;
 }
 
-/* Zapobieganie przesunięciom układu (CLS) i responsywność zdjęć */
+/* DODANO: Zapobieganie zniekształceniom obrazków przy ustawionych width/height w HTML */
 img {
     max-width: 100%;
     height: auto;
-    display: block;
+    display: block; /* Usuwa dziwne odstępy pod obrazkami */
 }
 
-/* ZMIENNE KOLORYSTYCZNE */
+/* KOLORY I AKCENTY */
 :root {
     --accent: #f9c846;
     --dark-bg: #141414;
@@ -27,11 +27,11 @@ img {
     --border: #333;
 }
 
-/* --- HEADER & NAV --- */
+/* HEADER */
 header {
     background: black;
     color: var(--accent);
-    padding: 15px 30px;
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,12 +43,10 @@ header {
 
 .logo {
     font-family: 'Noto Serif JP', serif;
-    font-size: 24px;
+    font-size: 28px;
     letter-spacing: 1px;
-    z-index: 1001; /* By logo było nad rozwijanym menu */
 }
 
-/* Styl listy nawigacyjnej na Desktop */
 nav ul {
     list-style: none;
     display: flex;
@@ -70,42 +68,21 @@ nav ul li a:hover {
     color: var(--accent);
 }
 
-/* IKONA HAMBURGERA (Domyślnie ukryta na PC) */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    gap: 5px;
-    z-index: 1001;
-}
-
-.hamburger span {
-    width: 30px;
-    height: 3px;
-    background-color: var(--accent);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-/* --- HERO --- */
+/* HERO */
 .hero {
     color: #fff;
     text-align: center;
-    padding: 120px 20px;
+    padding: 160px 20px;
     position: relative;
-    /* Link do zoptymalizowanego obrazu tła */
-    background: url('https://images.pexels.com/photos/6205516/pexels-photo-6205516.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+    /* Obraz tła jest teraz preloadowany w HTML dla szybszego LCP */
+    background: url('https://images.pexels.com/photos/6205516/pexels-photo-6205516.jpeg') center/cover no-repeat;
 }
 
 .hero::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.65);
 }
 
@@ -115,14 +92,14 @@ nav ul li a:hover {
 }
 
 .hero h1 {
-    font-size: 36px;
+    font-size: 48px;
     color: var(--accent);
     margin-bottom: 20px;
     font-family: 'Noto Serif JP', serif;
 }
 
 .hero p {
-    font-size: 16px;
+    font-size: 18px;
     max-width: 600px;
     margin: 0 auto 30px;
 }
@@ -135,7 +112,7 @@ nav ul li a:hover {
     font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .hero button:hover {
@@ -143,9 +120,9 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* --- RESZTA SEKCJI --- */
+/* OGÓLNE SEKCJE */
 section {
-    padding: 50px 20px;
+    padding: 70px 20px;
     text-align: center;
 }
 
@@ -153,7 +130,8 @@ section h2 {
     font-family: 'Noto Serif JP', serif;
     color: var(--accent);
     margin-bottom: 25px;
-    font-size: 26px;
+    font-size: 28px;
+    letter-spacing: 1px;
 }
 
 section p {
@@ -166,18 +144,26 @@ section p {
     background-color: var(--dark-bg);
 }
 
-.about img {
-    /* Ustawienie szerokości na 100% kontenera, ale nie szerzej niż 600px */
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(249, 200, 70, 0.3);
+.about p {
+    max-width: 800px;
+    margin: 0 auto 25px;
+    text-align: justify;
 }
 
-/* MENU */
+.about img {
+    /* Zmieniono width na max-width w regule globalnej, tutaj doprecyzowanie */
+    width: 80%; 
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(249, 200, 70, 0.3);
+    margin: 0 auto; /* Centrowanie obrazka */
+}
+
+/*MENU*/
 .menu {
     background-color: #1a1a1a;
+    padding: 70px 20px;
+    text-align: center;
 }
 
 .menu-items {
@@ -192,9 +178,9 @@ section p {
     border: 1px solid #333;
     border-radius: 8px;
     padding: 20px;
-    width: 100%;
-    max-width: 300px;
-    transition: transform 0.3s ease;
+    width: 280px;
+    color: #f4f4f4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-item:hover {
@@ -203,7 +189,7 @@ section p {
 }
 
 .menu-item h3 {
-    color: var(--accent);
+    color: #f9c846;
     margin-bottom: 10px;
 }
 
@@ -212,26 +198,41 @@ section p {
     background-color: var(--medium-bg);
 }
 
-.service {
+.services .service {
     background: #222;
     border: 1px solid var(--border);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 350px;
     border-radius: 8px;
-    transition: transform 0.3s ease;
+    padding: 25px;
+    margin: 20px;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
 }
 
-.service:hover {
+.services .service:hover {
     transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(249, 200, 70, 0.2);
 }
 
-.service img {
+.services h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.services .service img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 6px;
     margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.services .service img:hover {
+    transform: scale(1.05);
 }
 
 /* BLOG */
@@ -239,14 +240,24 @@ section p {
     background-color: var(--dark-bg);
 }
 
+.blog h2 {
+    font-size: 28px;
+}
+
 .blog article {
     background: #222;
     border-radius: 8px;
     padding: 20px;
-    margin: 20px auto;
-    max-width: 350px;
+    margin: 20px;
+    display: inline-block;
+    width: 320px;
     border: 1px solid var(--border);
+    transition: transform 0.3s ease;
     text-align: left;
+}
+
+.blog article:hover {
+    transform: translateY(-5px);
 }
 
 .blog article a {
@@ -255,16 +266,37 @@ section p {
     font-weight: 600;
 }
 
+.blog article a:hover {
+    text-decoration: underline;
+}
+
 /* FAQ */
 .faq {
     background-color: var(--medium-bg);
     text-align: left;
-    padding: 50px 5%;
+    padding: 70px 10%;
+}
+
+.faq h2 {
+    text-align: center;
 }
 
 .faq h3 {
     color: var(--accent);
     margin-top: 20px;
+    font-size: 18px;
+}
+
+.faq p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.faq a {
+    color: #f9c846;
+}
+.faq a:hover {
+    color: #f4f4f4;
 }
 
 /* CONTACT */
@@ -285,6 +317,11 @@ form input, form textarea {
     border: 1px solid var(--border);
     border-radius: 5px;
     color: #fff;
+    font-size: 15px;
+}
+
+form input::placeholder, form textarea::placeholder {
+    color: #aaa;
 }
 
 form button {
@@ -292,8 +329,8 @@ form button {
     color: #111;
     border: none;
     padding: 12px 28px;
-    width: 100%;
-    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -302,94 +339,68 @@ form button:hover {
     background: #ffd45c;
 }
 
+/* SOCIAL LINKS */
+.social {
+    margin-top: 20px;
+}
+
+.social a {
+    color: var(--accent);
+    margin: 0 8px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social a:hover {
+    color: #ffd45c;
+    text-decoration: underline;
+}
+
 /* FOOTER */
 footer {
     background: #000;
     color: #aaa;
     padding: 25px;
     text-align: center;
+    font-size: 14px;
     border-top: 1px solid #333;
 }
 
-.social a {
-    color: var(--accent);
-    margin: 0 10px;
-    text-decoration: none;
-}
+/* RESPONSYWNOŚĆ */
+@media (max-width: 900px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* --- RESPONSYWNOŚĆ (MEDIA QUERIES) --- */
+    .services .service,
+    .blog article {
+        width: 90%;
+    }
 
-/* Dla ekranów PC (Desktop) powyżej 900px */
-@media (min-width: 900px) {
     .hero h1 {
-        font-size: 48px;
+        font-size: 36px;
     }
 
     .hero p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
-    nav ul {
-        display: flex !important;
-        flex-direction: row;
-        position: static;
-        border: none;
-        padding: 0;
-        background: transparent;
-    }
-
-    nav ul li {
-        margin-left: 25px;
-        margin-top: 0;
+    .faq {
+        padding: 50px 5%;
     }
 }
 
-/* Dla telefonów (Mobile) poniżej 900px */
-@media (max-width: 900px) {
-    /* Pokazujemy hamburgera */
-    .hamburger {
-        display: flex;
-    }
-
-    /* Ukrywamy menu domyślnie i stylujemy jako wysuwane */
-    nav ul {
-        display: none; /* Ukryte */
+@media (max-width: 600px) {
+    header {
         flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #000;
-        border-bottom: 2px solid var(--accent);
-        padding: 20px 0;
-        text-align: center;
-        animation: slideDown 0.3s ease-in-out;
     }
 
-    /* Klasa 'active' dodawana przez JS - pokazuje menu */
-    nav ul.active {
-        display: flex;
+    .logo {
+        margin-bottom: 10px;
     }
 
-    nav ul li {
-        margin: 15px 0;
+    section h2 {
+        font-size: 24px;
     }
-
-    /* Animacja ikony hamburgera w 'X' */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-    }
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
