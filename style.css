@@ -281,7 +281,9 @@ section p {
     margin-bottom: 15px;
     line-height: 1.6;
 }
-
+.faq p a {
+    backgroud-color: #f9c846;
+}
 /* CONTACT */
 .contact {
     background-color: var(--dark-bg);
@@ -387,3 +389,4 @@ footer {
         font-size: 24px;
     }
 }
+
